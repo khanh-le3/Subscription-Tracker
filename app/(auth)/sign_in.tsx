@@ -9,6 +9,9 @@ const SignIn: React.FC = () => {
             <Link href="./(auth)/sign_up" className="text-blue-500 underline">
                 Don't have an account? Sign Up
             </Link>
+            <Link href="./" className="text-blue-500 underline">
+                Homepage
+            </Link>
         </View>
     );
 };

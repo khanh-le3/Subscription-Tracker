@@ -1,29 +1,32 @@
 
 import { Text, View, StyleSheet } from "react-native";
+import {styled} from "nativewind";
 import { Link } from "expo-router";
 import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaView as SafeAreaViewRN } from "react-native-safe-area-context";
 
+const SafeAreaView = styled(SafeAreaViewRN);
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-background ">
+    <SafeAreaView className="flex-1 bg-background ">
       <Text className="text-xl font-bold text-blue-500">
         Welcome to Nativewind!
       </Text>
 
-      <Link href="./onboarding">
-        <Text className="mt-4 rounded bg-primary text-blue-500 underline p-4">Go to Onboarding</Text>
+      <Link href="./onboarding" className="mt-4 rounded bg-primary text-blue-500 p-4">
+        <Text className="mt-4 rounded bg-primary text-blue-500 p-4">Go to Onboarding</Text>
       </Link>
 
-      <Link href="./(auth)/sign_in" className="mt-4 rounded text-blue-500 underline p-4">
-        Go to Sign In
+      <Link href="./(auth)/sign_in" className="mt-4 rounded bg-primary text-blue-500  p-4">
+        <Text className="mt-4 rounded bg-primary text-blue-500 p-4">Go to Sign In</Text>
       </Link>
       
-      <Link href="./(auth)/sign_up" className="mt-4 rounded text-blue-500 underline p-4">
-        Go to Sign Up
+      <Link href="./(auth)/sign_up" className="mt-4 rounded bg-primary text-blue-500  p-4">
+        <Text className="mt-4 rounded bg-primary text-blue-500 p-4">Go to Sign Up</Text>
       </Link>
 
-      <Link href="./subscription/spotify">
-        Spotify Subscription
+      <Link href="./subscription/spotify" className="mt-4 rounded bg-primary text-blue-500  p-4">
+        <Text className="mt-4 rounded bg-primary text-blue-500  p-4">Spotify Subscription </Text>
       </Link>
       <Link href = {{
         pathname: "./subscriptions/[id]",
@@ -31,15 +34,7 @@ export default function App() {
       }}>
         Claude Max Subscription
       </Link>
-    </View>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
