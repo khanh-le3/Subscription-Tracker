@@ -8,32 +8,24 @@ import { SafeAreaView as SafeAreaViewRN } from "react-native-safe-area-context";
 const SafeAreaView = styled(SafeAreaViewRN);
 export default function App() {
   return (
-    <SafeAreaView className="flex-1 bg-background ">
-      <Text className="text-xl font-bold text-blue-500">
-        Welcome to Nativewind!
+    <SafeAreaView className="flex-1 bg-background  ">
+      <Text className="text-5xl font-bold text-blue-500">
+        HomePage
       </Text>
 
-      <Link href="./onboarding" className="mt-4 rounded bg-primary text-blue-500 p-4">
-        <Text className="mt-4 rounded bg-primary text-blue-500 p-4">Go to Onboarding</Text>
+      <Link href="./onboarding" className="mt-4 font-sans-bold rounded bg-primary text-white p-4">
+        Go to Onboarding
       </Link>
 
-      <Link href="./(auth)/sign_in" className="mt-4 rounded bg-primary text-blue-500  p-4">
-        <Text className="mt-4 rounded bg-primary text-blue-500 p-4">Go to Sign In</Text>
+      <Link href="./(auth)/sign_in" className="mt-4 font-sans-bold rounded bg-primary text-white p-4">
+        Go to Sign In
       </Link>
       
-      <Link href="./(auth)/sign_up" className="mt-4 rounded bg-primary text-blue-500  p-4">
-        <Text className="mt-4 rounded bg-primary text-blue-500 p-4">Go to Sign Up</Text>
+      <Link href="./(auth)/sign_up" className="mt-4 font-sans-bold rounded bg-primary text-white  p-4">
+        Go to Sign Up
       </Link>
 
-      <Link href="./subscription/spotify" className="mt-4 rounded bg-primary text-blue-500  p-4">
-        <Text className="mt-4 rounded bg-primary text-blue-500  p-4">Spotify Subscription </Text>
-      </Link>
-      <Link href = {{
-        pathname: "./subscriptions/[id]",
-        params: { id: "claude" },
-      }}>
-        Claude Max Subscription
-      </Link>
+      
     </SafeAreaView>
   );
 }

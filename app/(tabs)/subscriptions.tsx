@@ -4,7 +4,7 @@ import { SafeAreaView as SafeAreaViewRN } from "react-native-safe-area-context";
 import {styled} from "nativewind";
 const SafeAreaView = styled(SafeAreaViewRN);
 
-const subsciptions = () => {
+const subscriptions = () => {
   return (
     <SafeAreaView className="flex-1 bg-background ">
       <Text>subsciptions</Text>
@@ -12,4 +12,4 @@ const subsciptions = () => {
   )
 }
 
-export default subsciptions
+export default subscriptions
