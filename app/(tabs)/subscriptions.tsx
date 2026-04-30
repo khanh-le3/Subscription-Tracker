@@ -7,7 +7,7 @@ const SafeAreaView = styled(SafeAreaViewRN);
 const subscriptions = () => {
   return (
     <SafeAreaView className="flex-1 bg-background ">
-      <Text>subsciptions</Text>
+      <Text>subscriptions</Text>
     </SafeAreaView>
   )
 }
