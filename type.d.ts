@@ -17,6 +17,9 @@ declare global {
         name: string;
         icon: ImageSourcePropType;
         price: number;
+        plan: string;
+        category: string;
+        paymentMethod: string;
         frequency?: string;
         startDate?: string;
         status?: string;
@@ -33,7 +36,7 @@ declare global {
         isCancelling?: boolean;
     }
 
-    interface UpcomingSubscrition {
+    interface UpcomingSubscription {
         id: string;
         name: string;
         icon: ImageSourcePropType;
