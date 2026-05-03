@@ -18,13 +18,17 @@ const HAS_LOWERCASE = /[a-z]/;
 const HAS_NUMBER = /\d/;
 
 const COLORS = {
-  background: "#fff9e3",
+  background: "#202020",
   card: "#fff8e7",
-  primary: "#081126",
+  primary: "#f5f5f7",
   accent: "#ea7a53",
-  border: "rgba(0, 0, 0, 0.1)",
-  muted: "rgba(0, 0, 0, 0.6)",
+  border: "rgba(255, 255, 255, 0.12)",
+  muted: "rgba(255, 255, 255, 0.6)",
   destructive: "#dc2626",
+  ink: "#081126",
+  cardText: "#081126",
+  cardMuted: "rgba(0, 0, 0, 0.6)",
+  cardBorder: "rgba(0, 0, 0, 0.1)",
 };
 
 const getErrorMessage = (error: unknown, fallback: string): string => {
@@ -265,7 +269,7 @@ export default function SignUp() {
               marginTop: 32,
               borderRadius: 24,
               borderWidth: 1,
-              borderColor: COLORS.border,
+              borderColor: COLORS.cardBorder,
               backgroundColor: COLORS.card,
               padding: 20,
             }}
@@ -273,7 +277,7 @@ export default function SignUp() {
             {requiresVerification ? (
               <View style={{ gap: 16 }}>
                 <View style={{ gap: 8 }}>
-                  <Text style={{ color: COLORS.primary, fontSize: 14, fontWeight: "600" }}>
+                  <Text style={{ color: COLORS.cardText, fontSize: 14, fontWeight: "600" }}>
                     Verification code
                   </Text>
                   <TextInput
@@ -308,7 +312,7 @@ export default function SignUp() {
             ) : (
               <View style={{ gap: 16 }}>
                 <View style={{ gap: 8 }}>
-                  <Text style={{ color: COLORS.primary, fontSize: 14, fontWeight: "600" }}>
+                  <Text style={{ color: COLORS.cardText, fontSize: 14, fontWeight: "600" }}>
                     Email
                   </Text>
                   <TextInput
@@ -326,7 +330,7 @@ export default function SignUp() {
                 </View>
 
                 <View style={{ gap: 8 }}>
-                  <Text style={{ color: COLORS.primary, fontSize: 14, fontWeight: "600" }}>
+                  <Text style={{ color: COLORS.cardText, fontSize: 14, fontWeight: "600" }}>
                     Password
                   </Text>
                   <TextInput
@@ -341,13 +345,13 @@ export default function SignUp() {
                     style={[styles.input, passwordError ? styles.inputError : null]}
                   />
                   {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
-                  <Text style={{ color: COLORS.muted, fontSize: 13, fontWeight: "500" }}>
+                  <Text style={{ color: COLORS.cardMuted, fontSize: 13, fontWeight: "500" }}>
                     Include uppercase, lowercase, and a number for better account security.
                   </Text>
                 </View>
 
                 <View style={{ gap: 8 }}>
-                  <Text style={{ color: COLORS.primary, fontSize: 14, fontWeight: "600" }}>
+                  <Text style={{ color: COLORS.cardText, fontSize: 14, fontWeight: "600" }}>
                     Confirm password
                   </Text>
                   <TextInput
@@ -411,12 +415,12 @@ const styles = {
   input: {
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
-    backgroundColor: COLORS.background,
+    borderColor: COLORS.cardBorder,
+    backgroundColor: "transparent",
     paddingHorizontal: 16,
     paddingVertical: 14,
     fontSize: 16,
-    color: COLORS.primary,
+    color: COLORS.cardText,
   },
   inputError: {
     borderColor: COLORS.destructive,
@@ -437,7 +441,7 @@ const styles = {
     backgroundColor: "rgba(234, 122, 83, 0.45)",
   },
   primaryButtonText: {
-    color: COLORS.primary,
+    color: COLORS.ink,
     fontSize: 16,
     fontWeight: "700" as const,
   },

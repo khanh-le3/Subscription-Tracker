@@ -1,52 +1,36 @@
 import { useClerk, useUser } from "@clerk/expo";
 import { Pressable, Text, View } from "react-native";
-import { SafeAreaView as SafeAreaViewRN } from "react-native-safe-area-context";
-import { styled } from "nativewind";
-
-const SafeAreaView = styled(SafeAreaViewRN);
+import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "@/constants/theme";
 
 const Settings = () => {
   const { signOut } = useClerk();
   const { user } = useUser();
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff9e3" }}>
-      <View style={{ paddingHorizontal: 20, paddingTop: 24, gap: 24 }}>
+    <SafeAreaView className="flex-1 bg-background" style={{ backgroundColor: colors.background }}>
+      <View className="px-5 pt-6 gap-6">
         <View>
-          <Text style={{ color: "#081126", fontSize: 28, fontWeight: "800" }}>Settings</Text>
-          <Text style={{ color: "rgba(0,0,0,0.6)", fontSize: 15, marginTop: 6 }}>
+          <Text className="text-3xl font-sans-extrabold text-foreground">Settings</Text>
+          <Text className="mt-1.5 text-base font-sans-medium text-muted-foreground">
             Manage your account and session.
           </Text>
         </View>
 
-        <View
-          style={{
-            borderRadius: 20,
-            borderWidth: 1,
-            borderColor: "rgba(0,0,0,0.1)",
-            backgroundColor: "#fff8e7",
-            padding: 16,
-            gap: 6,
-          }}
-        >
-          <Text style={{ color: "rgba(0,0,0,0.6)", fontSize: 12, fontWeight: "600", letterSpacing: 1, textTransform: "uppercase" }}>
+        <View className="rounded-3xl border border-ink/10 bg-card p-4 gap-1.5">
+          <Text className="text-xs font-sans-semibold uppercase tracking-[1px] text-ink/60">
             Signed in as
           </Text>
-          <Text style={{ color: "#081126", fontSize: 16, fontWeight: "700" }}>
+          <Text className="text-base font-sans-bold text-ink">
             {user?.primaryEmailAddress?.emailAddress ?? "Unknown user"}
           </Text>
         </View>
 
         <Pressable
           onPress={() => signOut()}
-          style={{
-            alignItems: "center",
-            borderRadius: 16,
-            backgroundColor: "#ea7a53",
-            paddingVertical: 16,
-          }}
+          className="items-center rounded-2xl bg-accent py-4"
         >
-          <Text style={{ color: "#081126", fontSize: 16, fontWeight: "700" }}>Sign out</Text>
+          <Text className="text-base font-sans-bold text-ink">Sign out</Text>
         </Pressable>
       </View>
     </SafeAreaView>

@@ -1,6 +1,7 @@
 import { useAuth } from "@clerk/expo";
 import { Redirect, Stack } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
+import { colors } from "@/constants/theme";
 
 export default function AuthLayout() {
   const { isLoaded, isSignedIn } = useAuth();
@@ -10,12 +11,12 @@ export default function AuthLayout() {
       <View
         style={{
           flex: 1,
-          backgroundColor: "#fff9e3",
+          backgroundColor: colors.background,
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        <ActivityIndicator size="large" color="#ea7a53" />
+        <ActivityIndicator size="large" color={colors.accent} />
       </View>
     );
   }
@@ -24,5 +25,12 @@ export default function AuthLayout() {
     return <Redirect href="/(tabs)" />;
   }
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        contentStyle: { backgroundColor: colors.background },
+      }}
+    />
+  );
 }
