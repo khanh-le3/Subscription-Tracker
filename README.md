@@ -1,124 +1,89 @@
 # SubManager
 
-SubManager is a subscription tracking app built with Expo + React Native.  
-It helps users track recurring services, see upcoming renewals, and understand spending trends.
+SubManager is a mobile app for tracking subscriptions, monitoring recurring costs, and staying ahead of renewals.
+It is designed to give users a clear, fast view of what they are spending every month and year, with simple tools to add, browse, and analyze services in one place.
 
-## Features
+## Why SubManager
 
-- Clerk authentication (sign up, sign in, email verification/code flow)
-- Add subscriptions with:
+Subscription spending is easy to lose track of across streaming platforms, productivity tools, and SaaS services.
+SubManager helps by centralizing everything into a single dashboard:
+
+- See all active subscriptions in one list
+- Track upcoming renewals
+- Monitor monthly and yearly expenditure
+- Review spending insights by month and category
+
+## Core Features
+
+- Secure authentication with Clerk (sign up, sign in, verification flow)
+- Add new subscriptions with custom:
   - name
   - price
   - start date (`DD/MM/YYYY`)
-  - billing frequency (monthly/yearly)
+  - billing cycle (monthly/yearly)
   - category
-- Edit-by-expand card view with detailed metadata
-- Delete subscription from list cards
-- Home dashboard:
-  - total expenditure summary (monthly + yearly totals)
-  - upcoming renewals section with brand icons
-  - active subscription list
-- Subscriptions screen:
-  - searchable list (name/category/plan)
-- Insights screen:
+- Expandable subscription cards with key details
+- Delete subscriptions from list view
+- Search subscriptions by name, category, or plan
+- Insights dashboard with:
   - highest monthly-equivalent spend
   - average spend per service
-  - monthly-equivalent KPI
-  - spending by month line chart (SVG)
-  - category breakdown bars
-- Local persistence with AsyncStorage (data survives app restarts)
+  - monthly spending trend chart
+  - category spending breakdown
+- Persistent local storage (data remains after app restart)
 
 ## Tech Stack
 
-- Expo SDK 54
-- React 19 + React Native 0.81
+- Expo + React Native
 - Expo Router
-- Clerk (`@clerk/expo`)
+- Clerk authentication
 - NativeWind + Tailwind CSS
-- AsyncStorage (`@react-native-async-storage/async-storage`)
-- `dayjs`, `clsx`, `react-native-svg`, `expo-image`
-
-## Project Structure
-
-```text
-app/
-  _layout.tsx                 # Root providers, fonts, Clerk, stack
-  (auth)/
-    _layout.tsx               # Redirect signed-in users to tabs
-    sign_in.tsx
-    sign_up.tsx
-  (tabs)/
-    _layout.tsx               # Tabs + auth gate + SubscriptionsProvider
-    index.tsx                 # Home dashboard
-    subscriptions.tsx         # Searchable subscription list
-    insights.tsx              # Analytics and charting
-    settings.tsx              # Account and sign out
-components/
-  CreateSubscriptionModal.tsx
-  SubscriptionCard.tsx
-  UpcomingSubscriptionCard.tsx
-  ListHeading.tsx
-context/
-  SubscriptionsContext.tsx    # Subscription state + AsyncStorage hydration
-constants/
-  data.ts                     # Tab definitions
-  theme.ts                    # Color and spacing theme
-lib/
-  utils.ts
-  brandIcons.ts               # Icon source resolution for service names
-```
+- AsyncStorage for persistence
+- SVG-based chart rendering for insights
 
 ## Getting Started
 
-### 1) Install dependencies
+### Prerequisites
+
+- Node.js and npm
+- Expo CLI tooling
+- A Clerk project/publishable key
+
+### Installation
 
 ```bash
 npm install
 ```
 
-### 2) Configure environment
+### Environment Setup
 
-Create a `.env` file in project root:
+Create a `.env` file in the project root:
 
 ```env
 EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 ```
 
-Without this key, the app renders a runtime warning screen from `app/_layout.tsx`.
-
-### 3) Run locally
+### Run the app
 
 ```bash
 npm run start
 ```
 
-Shortcuts:
+Optional shortcuts:
 
 - Android: `npm run android`
 - iOS: `npm run ios`
 - Web: `npm run web`
 
-Lint:
+### Lint
 
 ```bash
 npm run lint
 ```
 
-## Data Model and Persistence
+## Build and Release
 
-Subscriptions are stored in `SubscriptionsContext` and persisted to device storage using AsyncStorage:
-
-- Storage key: `submanager.subscriptions`
-- Hydration gate: `isHydrated` prevents rendering lists before data loads
-
-Notes:
-
-- Data is local to device/app install (no backend sync yet)
-- Not currently partitioned by Clerk user ID
-
-## Build and Deploy (EAS)
-
-### Build Android AAB
+### Build Android (EAS)
 
 ```bash
 eas build --platform android --profile production --clear-cache
@@ -126,37 +91,18 @@ eas build --platform android --profile production --clear-cache
 
 ### Submit to Google Play
 
-Build does not auto-publish. After build, submit separately:
-
 ```bash
 eas submit -p android --latest
 ```
 
-Use Internal Testing track first.
+Recommended: submit to Internal Testing first.
 
-## Android Packaging Conflict Fix
+## Project Notes
 
-The project includes `expo-build-properties` config to avoid duplicate Java resource merge errors:
-
-- `META-INF/versions/9/OSGI-INF/MANIFEST.MF`
-- `META-INF/versions/**/OSGI-INF/MANIFEST.MF`
-
-This is configured in `app.json` under:
-
-- `plugins -> expo-build-properties -> android.packagingOptions.exclude`
-
-## App Configuration Highlights
-
-- Package ID: `com.ApexSoftDev.submanager`
+- App package ID: `com.ApexSoftDev.submanager`
 - Deep link scheme: `submanager`
-- EAS project ID set in `app.json` (`expo.extra.eas.projectId`)
-- Build profiles are defined in `eas.json`
-
-## Current Limitations / Notes
-
-- No backend sync (device-local storage only)
-- `react-native-gifted-charts` is installed but Insights currently uses custom SVG chart rendering
-- `npm run reset-project` references `./scripts/reset-project.js`, but that script is not present in this repo
+- Subscription data is currently device-local (no backend sync yet)
+- Android packaging exclusions are configured in `app.json` via `expo-build-properties` to prevent Gradle merge-resource conflicts
 
 ## License
 
