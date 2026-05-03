@@ -5,17 +5,18 @@
 @import "nativewind/theme";
 
 @theme {
-    --color-background: #fff9e3;
-    --color-foreground: #081126;
+    --color-background: #202020;
+    --color-foreground: #f5f5f7;
     --color-card: #fff8e7;
-    --color-muted: #f6eecf;
-    --color-muted-foreground: rgba(0, 0, 0, 0.6);
-    --color-primary: #081126;
+    --color-muted: #1f1f27;
+    --color-muted-foreground: rgba(255, 255, 255, 0.6);
+    --color-primary: #ffffff;
     --color-accent: #ea7a53;
-    --color-border: rgba(0, 0, 0, 0.1);
+    --color-border: rgba(255, 255, 255, 0.12);
     --color-success: #16a34a;
     --color-destructive: #dc2626;
     --color-subscription: #8fd1bd;
+    --color-ink: #081126;
     
 
 
@@ -77,7 +78,7 @@
     }
 
     .home-user-name {
-        @apply ml-4 text-2xl font-sans-bold text-primary;
+        @apply ml-4 text-2xl font-sans-bold text-foreground;
     }
 
     .home-add-icon {
@@ -109,19 +110,19 @@
     }
 
     .list-title {
-        @apply text-2xl font-sans-bold text-primary;
+        @apply text-2xl font-sans-bold text-foreground;
     }
 
     .list-action {
-        @apply rounded-full border border-black/20 px-4 py-1;
+        @apply rounded-full border border-border px-4 py-1;
     }
 
     .list-action-text {
-        @apply text-lg font-sans-semibold text-primary;
+        @apply text-lg font-sans-semibold text-foreground;
     }
 
     .upcoming-card {
-        @apply mr-4 w-44 rounded-2xl border border-black/10 bg-background p-4;
+        @apply mr-4 w-44 rounded-2xl border border-ink/10 bg-card p-4;
     }
 
     .upcoming-row {
@@ -133,19 +134,19 @@
     }
 
     .upcoming-price {
-        @apply text-lg font-sans-bold text-primary;
+        @apply text-lg font-sans-bold text-ink;
     }
 
     .upcoming-meta {
-        @apply text-sm font-sans-semibold text-muted-foreground;
+        @apply text-sm font-sans-semibold text-ink/60;
     }
 
     .upcoming-name {
-        @apply mt-2 text-lg font-sans-bold text-primary;
+        @apply mt-2 text-lg font-sans-bold text-ink;
     }
 
     .sub-card {
-        @apply rounded-2xl border border-border p-4;
+        @apply rounded-2xl border border-ink/10 p-4;
     }
 
     .sub-card-expanded {
@@ -169,11 +170,11 @@
     }
 
     .sub-title {
-        @apply mb-1 text-lg font-sans-bold text-primary;
+        @apply mb-1 text-lg font-sans-bold text-ink;
     }
 
     .sub-meta {
-        @apply text-sm font-sans-semibold text-muted-foreground;
+        @apply text-sm font-sans-semibold text-ink/60;
     }
 
     .sub-price-box {
@@ -181,11 +182,11 @@
     }
 
     .sub-price {
-        @apply mb-1 text-lg font-sans-bold text-primary;
+        @apply mb-1 text-lg font-sans-bold text-ink;
     }
 
     .sub-billing {
-        @apply text-sm font-sans-medium text-muted-foreground;
+        @apply text-sm font-sans-medium text-ink/60;
     }
 
     .sub-body {
@@ -205,27 +206,27 @@
     }
 
     .sub-label {
-        @apply shrink-0 text-base font-sans-medium text-muted-foreground;
+        @apply shrink-0 text-base font-sans-medium text-ink/60;
     }
 
     .sub-value {
-        @apply flex-1 font-sans-bold text-primary;
+        @apply flex-1 font-sans-bold text-ink;
     }
 
     .sub-cancel {
-        @apply mt-2 items-center rounded-full bg-primary py-4;
+        @apply mt-2 items-center rounded-full bg-ink py-4;
     }
 
     .sub-cancel-disabled {
-        @apply bg-primary/35;
+        @apply bg-ink/35;
     }
 
     .sub-cancel-text {
-        @apply font-sans-bold text-background;
+        @apply font-sans-bold text-foreground;
     }
 
     .home-empty-state {
-        @apply py-4 text-sm font-sans-medium text-black/60;
+        @apply py-4 text-sm font-sans-medium text-muted-foreground;
     }
 
     .auth-safe-area {
@@ -257,11 +258,11 @@
     }
 
     .auth-logo-mark-text {
-        @apply text-2xl font-sans-extrabold text-background;
+        @apply text-2xl font-sans-extrabold text-ink;
     }
 
     .auth-wordmark {
-        @apply text-3xl font-sans-extrabold text-primary;
+        @apply text-3xl font-sans-extrabold text-foreground;
     }
 
     .auth-wordmark-sub {
@@ -269,7 +270,7 @@
     }
 
     .auth-title {
-        @apply text-3xl font-sans-bold text-primary;
+        @apply text-3xl font-sans-bold text-foreground;
     }
 
     .auth-subtitle {
@@ -277,7 +278,7 @@
     }
 
     .auth-card {
-        @apply mt-8 rounded-3xl border border-border bg-card p-5;
+        @apply mt-8 rounded-3xl border border-ink/10 bg-card p-5;
     }
 
     .auth-form {
@@ -289,11 +290,11 @@
     }
 
     .auth-label {
-        @apply text-sm font-sans-semibold text-primary;
+        @apply text-sm font-sans-semibold text-ink;
     }
 
     .auth-input {
-        @apply rounded-2xl border border-border bg-background px-4 py-4 text-base font-sans-medium text-primary;
+        @apply rounded-2xl border border-ink/10 bg-card px-4 py-4 text-base font-sans-medium text-ink;
     }
 
     .auth-input-error {
@@ -317,7 +318,7 @@
     }
 
     .auth-button-text {
-        @apply text-base font-sans-bold text-primary;
+        @apply text-base font-sans-bold text-ink;
     }
 
     .auth-secondary-button {
@@ -365,7 +366,7 @@
     }
 
     .modal-title {
-        @apply text-xl font-sans-bold text-primary;
+        @apply text-xl font-sans-bold text-foreground;
     }
 
     .modal-close {
@@ -373,7 +374,7 @@
     }
 
     .modal-close-text {
-        @apply text-lg font-sans-bold text-primary;
+        @apply text-lg font-sans-bold text-foreground;
     }
 
     .modal-body {
