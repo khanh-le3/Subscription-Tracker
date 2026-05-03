@@ -1,7 +1,7 @@
+import { colors } from "@/constants/theme";
 import { useClerk, useUser } from "@clerk/expo";
 import { Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { colors } from "@/constants/theme";
 
 const Settings = () => {
   const { signOut } = useClerk();
@@ -19,7 +19,7 @@ const Settings = () => {
 
         <View className="rounded-3xl border border-ink/10 bg-card p-4 gap-1.5">
           <Text className="text-xs font-sans-semibold uppercase tracking-[1px] text-ink/60">
-            Signed in as
+            Signed In as
           </Text>
           <Text className="text-base font-sans-bold text-ink">
             {user?.primaryEmailAddress?.emailAddress ?? "Unknown user"}
